@@ -16,6 +16,8 @@ public class Employee {
     public int employementEndMonth;
     public int employementEndDay;
     public int yearsOfService;
+    public int monthsOfService;
+    public int daysOfService;
     private boolean isOnTheJob;
     public String status = null;
     
@@ -25,10 +27,10 @@ public class Employee {
     private double transportationAllowance;
     private double netSalary;
     
-    
-    
+        
     public LocalDate startingDate = null;
     public LocalDate endingDate = null;
+    LocalDate today = LocalDate.now();
     
     public Employee (){
       
@@ -41,15 +43,14 @@ public class Employee {
       employementEndMonth = 0;
       employementEndDay = 0;
       yearsOfService = 0;
+      monthsOfService = 0;
+      daysOfService = 0;
       baseWage = 0;
       gosiPercentage = 0;
       housingAllowance = 0;
       transportationAllowance = 0;
       netSalary = 0;
-      
-      
-      
-           
+        
     }
     public void setId (){
         Random rand = new Random();
@@ -79,7 +80,7 @@ public class Employee {
         endingDate = LocalDate.of(year, month, day);
     }
     public String isOnTheJob(){
-        LocalDate today = LocalDate.now();
+        
         
         if (endingDate.getYear() > today.getYear()){
             isOnTheJob = true;
@@ -88,7 +89,6 @@ public class Employee {
             isOnTheJob = false;
             status = "The employee is not on the job now";
         }
-        System.out.println(status);
         return status;
     } 
     public void setBaseWage(double Wage){
@@ -125,7 +125,25 @@ public class Employee {
         return endingDate;
     }
     public int getYearsOfService(){
-        return yearsOfService = Period.between(startingDate, endingDate).getYears();
+        if (isOnTheJob == true){
+            return yearsOfService = Period.between(startingDate, today).getYears();
+        }else {
+            return yearsOfService = Period.between(startingDate, endingDate).getYears();
+        }
+    }
+    public int getMonthsOfService(){
+        if (isOnTheJob == true){
+            return monthsOfService = Period.between(startingDate, today).getMonths();
+        }else {
+            return monthsOfService = Period.between(startingDate, endingDate).getMonths();
+        }
+    }
+    public int getDaysOfService(){
+        if (isOnTheJob == true){
+            return daysOfService = Period.between(startingDate, today).getDays();
+        }else {
+            return daysOfService = Period.between(startingDate, endingDate).getDays();
+        }
     }
     public double getBaseWage(){
         return baseWage;

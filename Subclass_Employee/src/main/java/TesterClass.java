@@ -4,29 +4,28 @@ import java.time.LocalDate;
 public class TesterClass {
     public static void main(String[] args) {
 
-        Employee obj = new Employee();
-        obj.setId();
-        obj.setPosition("General Manager");
+        Employee me = new Employee();
+        me.setId();
+        me.setPosition("General Manager");
         
-        obj.setEmployementStartDate(1994, 8, 19);
-        obj.setEmployementEndtDate(2018, 8, 19);
-        obj.isOnTheJob();
-        obj.setBaseWage(5000);
-        obj.setGosiPercentage();
-        obj.setHousingAllowance();
-        obj.setTransportationAllowance();
+        me.setEmployementStartDate(1994, 8, 19);
+        me.setEmployementEndtDate(2015, 4, 25);
+        
+        me.setBaseWage(5000);
+        me.setGosiPercentage();
+        me.setHousingAllowance();
+        me.setTransportationAllowance();
         
         System.out.println("Summar of object (me)");
         System.out.println("-------------------------");
         System.out.println("");
-        System.out.println(obj.getId());
-        System.out.println(obj.getPosition());
-        System.out.println(obj.getEmployementStartDate());
-        System.out.println(obj.getEmployementEndDate());
-        obj.isOnTheJob();
-        System.out.println(obj.getYearsOfService());
-        System.out.println(obj.getBaseWage());
-        System.out.println(obj.getNetSalary());
+        System.out.println(me.getId());
+        System.out.println(me.getPosition());
+        System.out.println(me.getEmployementStartDate());
+        System.out.println(me.getEmployementEndDate());
+        System.out.println(me.isOnTheJob() + " and" +" he served "+me.getYearsOfService()+" years, "+me.getMonthsOfService()+" months,"+" and "+me.getDaysOfService()+" days.");
+        System.out.println("Base Wage: " + me.getBaseWage());
+        System.out.println("Net Salary: " + me.getNetSalary());
 
     }
     
